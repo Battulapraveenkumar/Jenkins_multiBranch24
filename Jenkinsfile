@@ -1,23 +1,25 @@
-node('built-in') 
+node('built-in')
 {
-    stage('Continuous Download') 
+   
+
+    stage('Continuous Download_Child') 
 	{
     git 'https://github.com/sunildevops77/maven.git'
 	}
-    stage('Continuous Build') 
+    stage('Continuous Build_child') 
 	{
     sh label: '', script: 'mvn package'
 	}
-    stage('Continuous Deployment') 
+    stage('Continuous Deployment_child') 
 	{
-sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war   ubuntu@172.31.26.217:/var/lib/tomcat8/webapps/qaenv.war'
+sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war   ubuntu@172.31.0.184:/var/lib/tomcat8/webapps/qaenv.war'
 	}
-    stage('Continuous Testing') 
+    stage('Continuous Testing_child') 
 	{
               sh label: '', script: 'echo "Testing Passed"'
 	}
-    stage('Continuous Delivery') 
+    stage('Continuous Delivery_child') 
 	{
-sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war   ubuntu@172.31.22.88:/var/lib/tomcat8/webapps/prodenv.war'
+sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/ScriptedPipeline/webapp/target/webapp.war   ubuntu@172.31.4.165:/var/lib/tomcat8/webapps/prodenv.war'
 	}
 }
