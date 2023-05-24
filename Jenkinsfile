@@ -23,8 +23,7 @@ stage('Continuous Testing_master')
 stage('Continuous Delivery_master') 
    
 	 {
-	sh label: '', script: 'scp  /home/ubuntu/.jenkins/workspace/MultiBranchPipeline_master/webapp/target/webapp.war
-  ubuntu@172.31.4.165:/var/lib/tomcat9/webapps/prodenv.war'
+	sh label: '', script: 'scp  /home/ubuntu/.jenkins/workspace/MultiBranchPipeline_master/webapp/target/webapp.war  ubuntu@172.31.4.165:/var/lib/tomcat9/webapps/prodenv.war'
 	}
     
 }
